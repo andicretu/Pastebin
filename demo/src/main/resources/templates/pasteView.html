@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pastebin - View</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-4">Paste Details</h1>
+    <div class="card mt-4">
+        <div class="card-body">
+            <p><strong>ID:</strong> <span th:text="${textEntry.id}"></span></p>
+            <p><strong>Content:</strong></p>
+            <pre class="card-text" th:text="${textEntry.content}"></pre>
+        </div>
+    </div>
+    <p class="mt-4">
+        <a class="btn btn-primary" th:href="@{/paste/list}">Back to List</a>
+    </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Pastebin</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1>Pastebin</h1>
+    <form th:action="@{/paste/create}" th:object="${textEntry}" method="post" class="mb-3">
+        <div class="mb-3">
+            <label for="content" class="form-label">Paste text here:</label>
+            <textarea class="form-control" id="content" th:field="*{content}" rows="5"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <p th:if="${message}" th:text="${message}" class="text-success"></p>
+    </form>
+    <div>
+        <h2>Previous Entries</h2>
+        <ul class="list-group">
+            <li th:each="entry : ${textEntries}" class="list-group-item">
+                <a th:href="@{/paste/{id}(id=${entry.id})}" th:text="${entry.preview}" target="_blank">Short Text</a>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
